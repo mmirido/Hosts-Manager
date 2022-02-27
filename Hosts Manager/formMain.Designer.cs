@@ -32,7 +32,7 @@ namespace Hosts_Manager
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +64,9 @@ namespace Hosts_Manager
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip = new System.Windows.Forms.ToolStrip();
+			this.addtoolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+			this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.addBulkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.removeToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator0 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,9 +74,6 @@ namespace Hosts_Manager
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.dataGridView = new System.Windows.Forms.DataGridView();
-			this.addtoolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
-			this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.addBulkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip.SuspendLayout();
 			this.toolStrip.SuspendLayout();
 			this.panelMain.SuspendLayout();
@@ -82,7 +82,6 @@ namespace Hosts_Manager
 			// 
 			// menuStrip
 			// 
-			this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
 			this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
 			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -118,8 +117,9 @@ namespace Hosts_Manager
 			this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.newToolStripMenuItem.Text = "&New";
+			this.newToolStripMenuItem.Click += new System.EventHandler(this.addButton_Click);
 			// 
 			// openToolStripMenuItem
 			// 
@@ -127,13 +127,13 @@ namespace Hosts_Manager
 			this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.openToolStripMenuItem.Text = "&Open";
 			// 
 			// toolStripSeparator
 			// 
 			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(220, 6);
+			this.toolStripSeparator.Size = new System.Drawing.Size(267, 6);
 			// 
 			// saveToolStripMenuItem
 			// 
@@ -141,19 +141,20 @@ namespace Hosts_Manager
 			this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.saveToolStripMenuItem.Text = "&Save";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.generateToolStripButton_Click);
 			// 
 			// saveAsToolStripMenuItem
 			// 
 			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.saveAsToolStripMenuItem.Text = "Save &As";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(220, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
 			// 
 			// printToolStripMenuItem
 			// 
@@ -161,7 +162,7 @@ namespace Hosts_Manager
 			this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.printToolStripMenuItem.Name = "printToolStripMenuItem";
 			this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-			this.printToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.printToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.printToolStripMenuItem.Text = "&Print";
 			// 
 			// printPreviewToolStripMenuItem
@@ -169,19 +170,21 @@ namespace Hosts_Manager
 			this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
 			this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-			this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(220, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(267, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.exitToolStripMenuItem.Text = "E&xit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// editToolStripMenuItem
 			// 
@@ -202,20 +205,20 @@ namespace Hosts_Manager
 			// 
 			this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
 			this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-			this.undoToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
+			this.undoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.undoToolStripMenuItem.Text = "&Undo";
 			// 
 			// redoToolStripMenuItem
 			// 
 			this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
 			this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-			this.redoToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
+			this.redoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.redoToolStripMenuItem.Text = "&Redo";
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(216, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(267, 6);
 			// 
 			// cutToolStripMenuItem
 			// 
@@ -223,7 +226,7 @@ namespace Hosts_Manager
 			this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
 			this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.cutToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
+			this.cutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.cutToolStripMenuItem.Text = "Cu&t";
 			// 
 			// copyToolStripMenuItem
@@ -232,7 +235,7 @@ namespace Hosts_Manager
 			this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
 			this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.copyToolStripMenuItem.Text = "&Copy";
 			// 
 			// pasteToolStripMenuItem
@@ -241,18 +244,18 @@ namespace Hosts_Manager
 			this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
 			this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
+			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.pasteToolStripMenuItem.Text = "&Paste";
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(216, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(267, 6);
 			// 
 			// selectAllToolStripMenuItem
 			// 
 			this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-			this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
+			this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.selectAllToolStripMenuItem.Text = "Select &All";
 			// 
 			// toolsToolStripMenuItem
@@ -267,13 +270,13 @@ namespace Hosts_Manager
 			// customizeToolStripMenuItem
 			// 
 			this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-			this.customizeToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
+			this.customizeToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.customizeToolStripMenuItem.Text = "&Customize";
 			// 
 			// optionsToolStripMenuItem
 			// 
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
+			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.optionsToolStripMenuItem.Text = "&Options";
 			// 
 			// helpToolStripMenuItem
@@ -291,31 +294,33 @@ namespace Hosts_Manager
 			// contentsToolStripMenuItem
 			// 
 			this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.contentsToolStripMenuItem.Text = "&Contents";
 			// 
 			// indexToolStripMenuItem
 			// 
 			this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-			this.indexToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+			this.indexToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.indexToolStripMenuItem.Text = "&Index";
 			// 
 			// searchToolStripMenuItem
 			// 
 			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-			this.searchToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.searchToolStripMenuItem.Text = "&Search";
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(182, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(267, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(185, 34);
+			this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.aboutToolStripMenuItem.Text = "&About...";
+			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
 			// toolStrip
 			// 
@@ -332,6 +337,38 @@ namespace Hosts_Manager
 			this.toolStrip.Size = new System.Drawing.Size(963, 73);
 			this.toolStrip.TabIndex = 1;
 			this.toolStrip.Text = "toolStrip";
+			// 
+			// addtoolStripSplitButton
+			// 
+			this.addtoolStripSplitButton.AutoToolTip = false;
+			this.addtoolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.addtoolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.addBulkToolStripMenuItem});
+			this.addtoolStripSplitButton.Image = global::Hosts_Manager.Properties.Resources.plus;
+			this.addtoolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.addtoolStripSplitButton.Name = "addtoolStripSplitButton";
+			this.addtoolStripSplitButton.Size = new System.Drawing.Size(85, 68);
+			this.addtoolStripSplitButton.Text = "&Add";
+			this.addtoolStripSplitButton.ToolTipText = "Add URL(s)";
+			this.addtoolStripSplitButton.ButtonClick += new System.EventHandler(this.addButton_Click);
+			// 
+			// addToolStripMenuItem
+			// 
+			this.addToolStripMenuItem.AutoToolTip = true;
+			this.addToolStripMenuItem.Image = global::Hosts_Manager.Properties.Resources.add;
+			this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+			this.addToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
+			this.addToolStripMenuItem.Text = "&Add a URL";
+			this.addToolStripMenuItem.Click += new System.EventHandler(this.addButton_Click);
+			// 
+			// addBulkToolStripMenuItem
+			// 
+			this.addBulkToolStripMenuItem.Image = global::Hosts_Manager.Properties.Resources.add_new;
+			this.addBulkToolStripMenuItem.Name = "addBulkToolStripMenuItem";
+			this.addBulkToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
+			this.addBulkToolStripMenuItem.Text = "A&dd URLs";
+			this.addBulkToolStripMenuItem.Click += new System.EventHandler(this.addBulkButton_Click);
 			// 
 			// editToolStripButton
 			// 
@@ -395,14 +432,14 @@ namespace Hosts_Manager
 			this.dataGridView.AllowUserToResizeRows = false;
 			this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
 			this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+			this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView.ColumnHeadersHeight = 40;
 			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -416,38 +453,6 @@ namespace Hosts_Manager
 			this.dataGridView.Size = new System.Drawing.Size(963, 674);
 			this.dataGridView.TabIndex = 0;
 			this.dataGridView.VirtualMode = true;
-			// 
-			// addtoolStripSplitButton
-			// 
-			this.addtoolStripSplitButton.AutoToolTip = false;
-			this.addtoolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.addtoolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.addBulkToolStripMenuItem});
-			this.addtoolStripSplitButton.Image = global::Hosts_Manager.Properties.Resources.plus;
-			this.addtoolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.addtoolStripSplitButton.Name = "addtoolStripSplitButton";
-			this.addtoolStripSplitButton.Size = new System.Drawing.Size(85, 68);
-			this.addtoolStripSplitButton.Text = "&Add";
-			this.addtoolStripSplitButton.ToolTipText = "Add URL(s)";
-			this.addtoolStripSplitButton.ButtonClick += new System.EventHandler(this.addButton_Click);
-			// 
-			// addToolStripMenuItem
-			// 
-			this.addToolStripMenuItem.AutoToolTip = true;
-			this.addToolStripMenuItem.Image = global::Hosts_Manager.Properties.Resources.add;
-			this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-			this.addToolStripMenuItem.Size = new System.Drawing.Size(310, 74);
-			this.addToolStripMenuItem.Text = "&Add a URL";
-			this.addToolStripMenuItem.Click += new System.EventHandler(this.addButton_Click);
-			// 
-			// addBulkToolStripMenuItem
-			// 
-			this.addBulkToolStripMenuItem.Image = global::Hosts_Manager.Properties.Resources.add_new;
-			this.addBulkToolStripMenuItem.Name = "addBulkToolStripMenuItem";
-			this.addBulkToolStripMenuItem.Size = new System.Drawing.Size(310, 74);
-			this.addBulkToolStripMenuItem.Text = "A&dd URLs";
-			this.addBulkToolStripMenuItem.Click += new System.EventHandler(this.addBulkButton_Click);
 			// 
 			// formMain
 			// 

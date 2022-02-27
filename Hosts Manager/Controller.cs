@@ -9,28 +9,45 @@ namespace Hosts_Manager
 {
 	internal class Controller
 	{
-		internal static DialogResult AddURL(out string result)
+		internal static DataTable AddURL(DataTable dt)
 		{
+			/*
 			string input = string.Empty;
 			DialogResult rs = Messages.ShowInputBox(ref input, "Enter URL", "Enter new URL to list");
 			result = rs == DialogResult.OK ? input : string.Empty;
-			return rs;
+			*/
+
+			DialogResult rs = InputBox.Show("Enter a new URL to list", new (string, bool)[] { ("URL", false), ("IP", false) }, out string[] value);
+			if (rs == DialogResult.OK)
+			{
+				dt.Rows.Add(value[0], value[1]);
+				dt.AcceptChanges();
+			}
+			return dt;
 		}
 
-		/*
-		internal static DialogResult AddURLs(out string result)
+		internal static DataTable AddURLs(DataTable dt)
 		{
-			result = string.Empty;
-			return DialogResult.None;
+			DialogResult rs = InputBox.Show("Enter new URLs to list", new (string, bool)[] { ("URL", true), ("IP", false) }, out string[] value);
+			if (rs == DialogResult.OK)
+			{
+				string[] URLs = value[0].Split('\n');
+				for (int i = 0; i < URLs.Length; i++)
+				{
+					if (URLs[i] != string.Empty)
+						dt.Rows.Add(URLs[i], value[1]);
+				}
+				dt.AcceptChanges();
+			}
+			return dt;
 		}
-		*/
 
 		internal static DataTable LoadBlockList()
 		{
 			try
 			{
 				DataTable dt = XmlHelper.LoadToDataTable(Properties.Settings.Default.DataPath, Properties.Settings.Default.ListFileName);
-				dt = DataTableHelper.Sort(dt,false, ("host", true));
+				dt = DataTableHelper.Sort(dt, false, ("host", true));
 
 				return dt;
 			}
@@ -105,7 +122,7 @@ namespace Hosts_Manager
 		{
 			try
 			{
-				table = DataTableHelper.Sort(table,true, ("host", true));
+				table = DataTableHelper.Sort(table, true, ("host", true));
 
 				XmlHelper.SaveFromDataTable(Properties.Settings.Default.DataPath, Properties.Settings.Default.ListFileName, table);
 				GenerateHostsFile(table);
