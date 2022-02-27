@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Hosts_Manager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DefaultPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Windows\System32\drivers\etc\</Value>
+    </Setting>
+    <Setting Name="Hosts" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hosts</Value>
+    </Setting>
+    <Setting Name="HostsBackup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hosts.bak</Value>
+    </Setting>
+    <Setting Name="ListPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">data\DomainList.xml</Value>
+    </Setting>
+    <Setting Name="DataPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">data</Value>
+    </Setting>
+    <Setting Name="ListFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DomainList.xml</Value>
+    </Setting>
+    <Setting Name="DefaultIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.0.0.0</Value>
+    </Setting>
+    <Setting Name="RemoveConfirmation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

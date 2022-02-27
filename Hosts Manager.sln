@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hosts Manager", "Hosts Manager\Hosts Manager.csproj", "{C476428C-CC7C-4E58-91EA-444FAE38DFBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirido", "..\Mirido\Mirido\Mirido.csproj", "{0D192122-DFBB-407F-A271-B3FB1093DFAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C476428C-CC7C-4E58-91EA-444FAE38DFBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C476428C-CC7C-4E58-91EA-444FAE38DFBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C476428C-CC7C-4E58-91EA-444FAE38DFBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C476428C-CC7C-4E58-91EA-444FAE38DFBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D192122-DFBB-407F-A271-B3FB1093DFAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D192122-DFBB-407F-A271-B3FB1093DFAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D192122-DFBB-407F-A271-B3FB1093DFAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D192122-DFBB-407F-A271-B3FB1093DFAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25BD8675-FE9C-4DBD-80C1-DF7B8F379E36}
+	EndGlobalSection
+EndGlobal
