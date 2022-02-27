@@ -19,27 +19,18 @@ namespace Hosts_Manager
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e) => Controller.ShowAbout();
 
-		private void addButton_Click(object sender, EventArgs e) // Unfinished
+		private void addButton_Click(object sender, EventArgs e)
 		{
-			DialogResult rs = Controller.AddURL(out string newURL); // Add more textbox for redirected IP
-			if (rs == DialogResult.OK)
-			{
-				string redirectedIP = Properties.Settings.Default.DefaultIP;
-				AddToDataGridView(newURL, redirectedIP);
-			}
+			DataTable dt = dataGridView.DataSource as DataTable;
+			dt = Controller.AddURL(dt);
+			dt.AcceptChanges();
 		}
 
-		private void addBulkButton_Click(object sender, EventArgs e) // Unfinished
+		private void addBulkButton_Click(object sender, EventArgs e)
 		{
-			Messages.ShowInformation("Under Construction!");
-			/*
-			DialogResult rs = Controller.AddURL(out string newURL); // Add more textbox for redirected IP
-			if (rs == DialogResult.OK)
-			{
-				string redirectedIP = Properties.Settings.Default.DefaultIP;
-				AddToDataGridView(newURL, redirectedIP);
-			}
-			*/
+			DataTable dt = dataGridView.DataSource as DataTable;
+			dt = Controller.AddURLs(dt);
+			dt.AcceptChanges();
 		}
 
 		private void editToolStripButton_Click(object sender, EventArgs e)
@@ -63,19 +54,12 @@ namespace Hosts_Manager
 			}
 		}
 
-		private void buttonProcess_Click(object sender, EventArgs e) => dataGridView.DataSource = Controller.SaveBlockList(dataGridView.DataSource as DataTable);
-
-		private void AddToDataGridView(string newURL, string redirectedIP)
-		{
-			DataTable dt = dataGridView.DataSource as DataTable;
-			dt.Rows.Add(newURL, redirectedIP);
-			dt.AcceptChanges();
-		}
+		private void generateToolStripButton_Click(object sender, EventArgs e) => dataGridView.DataSource = Controller.SaveBlockList(dataGridView.DataSource as DataTable);
 
 		private void RemoveFromDataGridView(int rowCount)
 		{
 			DataTable dt = dataGridView.DataSource as DataTable;
-			for (int i = 0; i < rowCount; i++)
+			for (int i = rowCount - 1; i >= 0; i--)
 			{
 				dt.Rows.RemoveAt(dataGridView.SelectedRows[i].Index);
 			}
@@ -86,6 +70,21 @@ namespace Hosts_Manager
 			dataGridView.DataSource = null;
 			dataGridView.DataSource = Controller.LoadBlockList();
 			dataGridView.Columns.Add(DataGridViewHelper.BlankDataGridViewColumn());
+		}
+
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			if (keyData == Keys.F2)
+			{
+				editToolStripButton_Click(editToolStripButton, null);
+				return true;
+			}
+			if (keyData == Keys.Delete)
+			{
+				removeToolStripButton_Click(removeToolStripButton, null);
+				return true;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
 		}
 	}
 }
