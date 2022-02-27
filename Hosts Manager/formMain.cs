@@ -31,12 +31,15 @@ namespace Hosts_Manager
 
 		private void addBulkButton_Click(object sender, EventArgs e) // Unfinished
 		{
+			Messages.ShowInformation("Under Construction!");
+			/*
 			DialogResult rs = Controller.AddURL(out string newURL); // Add more textbox for redirected IP
 			if (rs == DialogResult.OK)
 			{
 				string redirectedIP = Properties.Settings.Default.DefaultIP;
 				AddToDataGridView(newURL, redirectedIP);
 			}
+			*/
 		}
 
 		private void editToolStripButton_Click(object sender, EventArgs e)

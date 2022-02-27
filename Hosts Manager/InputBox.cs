@@ -5,12 +5,12 @@ namespace Hosts_Manager
 {
 	public class InputBox
 	{
-		public static DialogResult Show(string prompt, string caption, out string[] value)
+		public static DialogResult Show(ref string value, string prompt, string caption)
 		{
-			return InitInputBox(prompt, caption, out value);
+			return InitInputBox(ref value, prompt, caption);
 		}
 
-		private static DialogResult InitInputBox(string prompt, string caption, out string[] value)
+		private static DialogResult InitInputBox(ref string value, string prompt, string caption)
 		{
 			Label label = new Label
 			{

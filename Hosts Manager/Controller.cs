@@ -17,11 +17,13 @@ namespace Hosts_Manager
 			return rs;
 		}
 
+		/*
 		internal static DialogResult AddURLs(out string result)
 		{
 			result = string.Empty;
 			return DialogResult.None;
 		}
+		*/
 
 		internal static DataTable LoadBlockList()
 		{
