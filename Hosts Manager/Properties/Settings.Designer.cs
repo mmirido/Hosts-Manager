@@ -26,96 +26,96 @@ namespace Hosts_Manager.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Windows\\System32\\drivers\\etc\\")]
-        public string DefaultPath {
+        public string hostsDir {
             get {
-                return ((string)(this["DefaultPath"]));
+                return ((string)(this["hostsDir"]));
             }
             set {
-                this["DefaultPath"] = value;
+                this["hostsDir"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("hosts")]
-        public string Hosts {
+        public string hostsFile {
             get {
-                return ((string)(this["Hosts"]));
+                return ((string)(this["hostsFile"]));
             }
             set {
-                this["Hosts"] = value;
+                this["hostsFile"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("hosts.bak")]
-        public string HostsBackup {
+        public string hostsBakFile {
             get {
-                return ((string)(this["HostsBackup"]));
+                return ((string)(this["hostsBakFile"]));
             }
             set {
-                this["HostsBackup"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data\\DomainList.xml")]
-        public string ListPath {
-            get {
-                return ((string)(this["ListPath"]));
-            }
-            set {
-                this["ListPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data")]
-        public string DataPath {
-            get {
-                return ((string)(this["DataPath"]));
-            }
-            set {
-                this["DataPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DomainList.xml")]
-        public string ListFileName {
-            get {
-                return ((string)(this["ListFileName"]));
-            }
-            set {
-                this["ListFileName"] = value;
+                this["hostsBakFile"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.0")]
-        public string DefaultIP {
+        public string defaultIP {
             get {
-                return ((string)(this["DefaultIP"]));
+                return ((string)(this["defaultIP"]));
             }
             set {
-                this["DefaultIP"] = value;
+                this["defaultIP"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool RemoveConfirmation {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string exeFile {
             get {
-                return ((bool)(this["RemoveConfirmation"]));
+                return ((string)(this["exeFile"]));
             }
             set {
-                this["RemoveConfirmation"] = value;
+                this["exeFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string exeDir {
+            get {
+                return ((string)(this["exeDir"]));
+            }
+            set {
+                this["exeDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string dataFile {
+            get {
+                return ((string)(this["dataFile"]));
+            }
+            set {
+                this["dataFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string dataDir {
+            get {
+                return ((string)(this["dataDir"]));
+            }
+            set {
+                this["dataDir"] = value;
             }
         }
     }

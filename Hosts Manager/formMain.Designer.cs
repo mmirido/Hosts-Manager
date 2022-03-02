@@ -32,7 +32,6 @@ namespace Hosts_Manager
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +45,7 @@ namespace Hosts_Manager
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.discardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,24 +62,36 @@ namespace Hosts_Manager
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip = new System.Windows.Forms.ToolStrip();
-			this.addtoolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
-			this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.addBulkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.removeToolStripButton = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator0 = new System.Windows.Forms.ToolStripSeparator();
-			this.generateToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+			this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+			this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.panelMain = new System.Windows.Forms.Panel();
-			this.dataGridView = new System.Windows.Forms.DataGridView();
+			this.lbLists = new System.Windows.Forms.ToolStripStatusLabel();
+			this.lbContent = new System.Windows.Forms.ToolStripStatusLabel();
+			this.splitContainer = new System.Windows.Forms.SplitContainer();
+			this.dgvLists = new System.Windows.Forms.DataGridView();
+			this.dgvContent = new System.Windows.Forms.DataGridView();
 			this.menuStrip.SuspendLayout();
 			this.toolStrip.SuspendLayout();
-			this.panelMain.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+			this.statusStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+			this.splitContainer.Panel1.SuspendLayout();
+			this.splitContainer.Panel2.SuspendLayout();
+			this.splitContainer.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvLists)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvContent)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip
 			// 
+			this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
 			this.menuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
 			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -90,9 +100,9 @@ namespace Hosts_Manager
             this.helpToolStripMenuItem});
 			this.menuStrip.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(963, 33);
+			this.menuStrip.Size = new System.Drawing.Size(778, 33);
 			this.menuStrip.TabIndex = 0;
-			this.menuStrip.Text = "menuStrip";
+			this.menuStrip.Text = "menuBar";
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -119,7 +129,7 @@ namespace Hosts_Manager
 			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
 			this.newToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.newToolStripMenuItem.Text = "&New";
-			this.newToolStripMenuItem.Click += new System.EventHandler(this.addButton_Click);
+			this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
 			// 
 			// openToolStripMenuItem
 			// 
@@ -143,7 +153,7 @@ namespace Hosts_Manager
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
 			this.saveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
 			this.saveToolStripMenuItem.Text = "&Save";
-			this.saveToolStripMenuItem.Click += new System.EventHandler(this.generateToolStripButton_Click);
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// saveAsToolStripMenuItem
 			// 
@@ -189,8 +199,7 @@ namespace Hosts_Manager
 			// editToolStripMenuItem
 			// 
 			this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
+            this.discardToolStripMenuItem,
             this.toolStripSeparator3,
             this.cutToolStripMenuItem,
             this.copyToolStripMenuItem,
@@ -201,24 +210,19 @@ namespace Hosts_Manager
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(58, 29);
 			this.editToolStripMenuItem.Text = "&Edit";
 			// 
-			// undoToolStripMenuItem
+			// discardToolStripMenuItem
 			// 
-			this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-			this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-			this.undoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-			this.undoToolStripMenuItem.Text = "&Undo";
-			// 
-			// redoToolStripMenuItem
-			// 
-			this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-			this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-			this.redoToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-			this.redoToolStripMenuItem.Text = "&Redo";
+			this.discardToolStripMenuItem.Name = "discardToolStripMenuItem";
+			this.discardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+			this.discardToolStripMenuItem.Size = new System.Drawing.Size(380, 34);
+			this.discardToolStripMenuItem.Text = "&Discard All Changes";
+			this.discardToolStripMenuItem.Click += new System.EventHandler(this.discardToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(267, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(377, 6);
 			// 
 			// cutToolStripMenuItem
 			// 
@@ -226,7 +230,7 @@ namespace Hosts_Manager
 			this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
 			this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.cutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+			this.cutToolStripMenuItem.Size = new System.Drawing.Size(380, 34);
 			this.cutToolStripMenuItem.Text = "Cu&t";
 			// 
 			// copyToolStripMenuItem
@@ -235,7 +239,7 @@ namespace Hosts_Manager
 			this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
 			this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(380, 34);
 			this.copyToolStripMenuItem.Text = "&Copy";
 			// 
 			// pasteToolStripMenuItem
@@ -244,18 +248,18 @@ namespace Hosts_Manager
 			this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
 			this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+			this.pasteToolStripMenuItem.Size = new System.Drawing.Size(380, 34);
 			this.pasteToolStripMenuItem.Text = "&Paste";
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(267, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(377, 6);
 			// 
 			// selectAllToolStripMenuItem
 			// 
 			this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-			this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+			this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(380, 34);
 			this.selectAllToolStripMenuItem.Text = "Select &All";
 			// 
 			// toolsToolStripMenuItem
@@ -324,142 +328,192 @@ namespace Hosts_Manager
 			// 
 			// toolStrip
 			// 
-			this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-			this.toolStrip.ImageScalingSize = new System.Drawing.Size(64, 64);
+			this.toolStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
 			this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addtoolStripSplitButton,
-            this.editToolStripButton,
-            this.removeToolStripButton,
-            this.toolStripSeparator0,
-            this.generateToolStripButton});
+            this.newToolStripButton,
+            this.openToolStripButton,
+            this.saveToolStripButton,
+            this.printToolStripButton,
+            this.toolStripSeparator6,
+            this.cutToolStripButton,
+            this.copyToolStripButton,
+            this.pasteToolStripButton,
+            this.toolStripSeparator7,
+            this.helpToolStripButton});
 			this.toolStrip.Location = new System.Drawing.Point(0, 33);
 			this.toolStrip.Name = "toolStrip";
-			this.toolStrip.Size = new System.Drawing.Size(963, 73);
+			this.toolStrip.Size = new System.Drawing.Size(778, 33);
 			this.toolStrip.TabIndex = 1;
-			this.toolStrip.Text = "toolStrip";
+			this.toolStrip.Text = "toolBar";
 			// 
-			// addtoolStripSplitButton
+			// newToolStripButton
 			// 
-			this.addtoolStripSplitButton.AutoToolTip = false;
-			this.addtoolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.addtoolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.addBulkToolStripMenuItem});
-			this.addtoolStripSplitButton.Image = global::Hosts_Manager.Properties.Resources.plus;
-			this.addtoolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.addtoolStripSplitButton.Name = "addtoolStripSplitButton";
-			this.addtoolStripSplitButton.Size = new System.Drawing.Size(85, 68);
-			this.addtoolStripSplitButton.Text = "&Add";
-			this.addtoolStripSplitButton.ToolTipText = "Add URL(s)";
-			this.addtoolStripSplitButton.ButtonClick += new System.EventHandler(this.addButton_Click);
+			this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
+			this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.newToolStripButton.Name = "newToolStripButton";
+			this.newToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.newToolStripButton.Text = "&New";
+			this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
 			// 
-			// addToolStripMenuItem
+			// openToolStripButton
 			// 
-			this.addToolStripMenuItem.AutoToolTip = true;
-			this.addToolStripMenuItem.Image = global::Hosts_Manager.Properties.Resources.add;
-			this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-			this.addToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
-			this.addToolStripMenuItem.Text = "&Add a URL";
-			this.addToolStripMenuItem.Click += new System.EventHandler(this.addButton_Click);
+			this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
+			this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.openToolStripButton.Name = "openToolStripButton";
+			this.openToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.openToolStripButton.Text = "&Open";
 			// 
-			// addBulkToolStripMenuItem
+			// saveToolStripButton
 			// 
-			this.addBulkToolStripMenuItem.Image = global::Hosts_Manager.Properties.Resources.add_new;
-			this.addBulkToolStripMenuItem.Name = "addBulkToolStripMenuItem";
-			this.addBulkToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
-			this.addBulkToolStripMenuItem.Text = "A&dd URLs";
-			this.addBulkToolStripMenuItem.Click += new System.EventHandler(this.addBulkButton_Click);
+			this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+			this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.saveToolStripButton.Name = "saveToolStripButton";
+			this.saveToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.saveToolStripButton.Text = "&Save";
+			this.saveToolStripButton.ToolTipText = "Save (Ctrl+S)";
+			this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
 			// 
-			// editToolStripButton
+			// printToolStripButton
 			// 
-			this.editToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.editToolStripButton.Image = global::Hosts_Manager.Properties.Resources.edit;
-			this.editToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.editToolStripButton.Name = "editToolStripButton";
-			this.editToolStripButton.Size = new System.Drawing.Size(68, 68);
-			this.editToolStripButton.Text = "&Edit";
-			this.editToolStripButton.ToolTipText = "Edit URL (First Selected)";
-			this.editToolStripButton.Click += new System.EventHandler(this.editToolStripButton_Click);
+			this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
+			this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.printToolStripButton.Name = "printToolStripButton";
+			this.printToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.printToolStripButton.Text = "&Print";
 			// 
-			// removeToolStripButton
+			// toolStripSeparator6
 			// 
-			this.removeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.removeToolStripButton.Image = global::Hosts_Manager.Properties.Resources.minus;
-			this.removeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.removeToolStripButton.Name = "removeToolStripButton";
-			this.removeToolStripButton.Size = new System.Drawing.Size(68, 68);
-			this.removeToolStripButton.Text = "&Remove";
-			this.removeToolStripButton.ToolTipText = "Remove URL (All Selected)";
-			this.removeToolStripButton.Click += new System.EventHandler(this.removeToolStripButton_Click);
+			this.toolStripSeparator6.Name = "toolStripSeparator6";
+			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 33);
 			// 
-			// toolStripSeparator0
+			// cutToolStripButton
 			// 
-			this.toolStripSeparator0.Name = "toolStripSeparator0";
-			this.toolStripSeparator0.Size = new System.Drawing.Size(6, 73);
+			this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.cutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripButton.Image")));
+			this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.cutToolStripButton.Name = "cutToolStripButton";
+			this.cutToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.cutToolStripButton.Text = "C&ut";
 			// 
-			// generateToolStripButton
+			// copyToolStripButton
 			// 
-			this.generateToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.generateToolStripButton.Image = global::Hosts_Manager.Properties.Resources.process;
-			this.generateToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.generateToolStripButton.Name = "generateToolStripButton";
-			this.generateToolStripButton.Size = new System.Drawing.Size(68, 68);
-			this.generateToolStripButton.Text = "&Generate";
-			this.generateToolStripButton.ToolTipText = "Generate hosts File";
+			this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.copyToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripButton.Image")));
+			this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.copyToolStripButton.Name = "copyToolStripButton";
+			this.copyToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.copyToolStripButton.Text = "&Copy";
+			// 
+			// pasteToolStripButton
+			// 
+			this.pasteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.pasteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripButton.Image")));
+			this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.pasteToolStripButton.Name = "pasteToolStripButton";
+			this.pasteToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.pasteToolStripButton.Text = "&Paste";
+			// 
+			// toolStripSeparator7
+			// 
+			this.toolStripSeparator7.Name = "toolStripSeparator7";
+			this.toolStripSeparator7.Size = new System.Drawing.Size(6, 33);
+			// 
+			// helpToolStripButton
+			// 
+			this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
+			this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.helpToolStripButton.Name = "helpToolStripButton";
+			this.helpToolStripButton.Size = new System.Drawing.Size(34, 28);
+			this.helpToolStripButton.Text = "He&lp";
 			// 
 			// statusStrip
 			// 
 			this.statusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-			this.statusStrip.Location = new System.Drawing.Point(0, 780);
+			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbLists,
+            this.lbContent});
+			this.statusStrip.Location = new System.Drawing.Point(0, 412);
 			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(963, 22);
+			this.statusStrip.Size = new System.Drawing.Size(778, 32);
 			this.statusStrip.TabIndex = 2;
-			this.statusStrip.Text = "statusStrip";
+			this.statusStrip.Text = "statusBar";
 			// 
-			// panelMain
+			// lbLists
 			// 
-			this.panelMain.Controls.Add(this.dataGridView);
-			this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panelMain.Location = new System.Drawing.Point(0, 106);
-			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(963, 674);
-			this.panelMain.TabIndex = 3;
+			this.lbLists.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.lbLists.Name = "lbLists";
+			this.lbLists.Size = new System.Drawing.Size(44, 25);
+			this.lbLists.Text = "N/A";
 			// 
-			// dataGridView
+			// lbContent
 			// 
-			this.dataGridView.AllowUserToAddRows = false;
-			this.dataGridView.AllowUserToDeleteRows = false;
-			this.dataGridView.AllowUserToResizeRows = false;
-			this.dataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-			this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-			dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-			dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-			this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this.dataGridView.ColumnHeadersHeight = 40;
-			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView.Location = new System.Drawing.Point(0, 0);
-			this.dataGridView.Name = "dataGridView";
-			this.dataGridView.ReadOnly = true;
-			this.dataGridView.RowHeadersVisible = false;
-			this.dataGridView.RowHeadersWidth = 62;
-			this.dataGridView.RowTemplate.Height = 28;
-			this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dataGridView.Size = new System.Drawing.Size(963, 674);
-			this.dataGridView.TabIndex = 0;
-			this.dataGridView.VirtualMode = true;
+			this.lbContent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.lbContent.Name = "lbContent";
+			this.lbContent.Size = new System.Drawing.Size(44, 25);
+			this.lbContent.Text = "N/A";
+			// 
+			// splitContainer
+			// 
+			this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.splitContainer.Location = new System.Drawing.Point(0, 66);
+			this.splitContainer.Name = "splitContainer";
+			// 
+			// splitContainer.Panel1
+			// 
+			this.splitContainer.Panel1.Controls.Add(this.dgvLists);
+			// 
+			// splitContainer.Panel2
+			// 
+			this.splitContainer.Panel2.Controls.Add(this.dgvContent);
+			this.splitContainer.Size = new System.Drawing.Size(778, 346);
+			this.splitContainer.SplitterDistance = 259;
+			this.splitContainer.TabIndex = 3;
+			// 
+			// dgvLists
+			// 
+			this.dgvLists.AllowUserToAddRows = false;
+			this.dgvLists.AllowUserToResizeRows = false;
+			this.dgvLists.BackgroundColor = System.Drawing.SystemColors.Window;
+			this.dgvLists.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+			this.dgvLists.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvLists.ColumnHeadersVisible = false;
+			this.dgvLists.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvLists.Location = new System.Drawing.Point(0, 0);
+			this.dgvLists.Name = "dgvLists";
+			this.dgvLists.RowHeadersVisible = false;
+			this.dgvLists.RowHeadersWidth = 62;
+			this.dgvLists.RowTemplate.Height = 28;
+			this.dgvLists.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgvLists.Size = new System.Drawing.Size(259, 346);
+			this.dgvLists.TabIndex = 0;
+			// 
+			// dgvContent
+			// 
+			this.dgvContent.AllowUserToResizeRows = false;
+			this.dgvContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvContent.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvContent.Enabled = false;
+			this.dgvContent.Location = new System.Drawing.Point(0, 0);
+			this.dgvContent.Name = "dgvContent";
+			this.dgvContent.RowHeadersVisible = false;
+			this.dgvContent.RowHeadersWidth = 62;
+			this.dgvContent.RowTemplate.Height = 28;
+			this.dgvContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgvContent.Size = new System.Drawing.Size(515, 346);
+			this.dgvContent.TabIndex = 0;
 			// 
 			// formMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(963, 802);
-			this.Controls.Add(this.panelMain);
+			this.ClientSize = new System.Drawing.Size(778, 444);
+			this.Controls.Add(this.splitContainer);
 			this.Controls.Add(this.statusStrip);
 			this.Controls.Add(this.toolStrip);
 			this.Controls.Add(this.menuStrip);
@@ -470,12 +524,19 @@ namespace Hosts_Manager
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Hosts Manager";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
+			this.Load += new System.EventHandler(this.formMain_Load);
 			this.menuStrip.ResumeLayout(false);
 			this.menuStrip.PerformLayout();
 			this.toolStrip.ResumeLayout(false);
 			this.toolStrip.PerformLayout();
-			this.panelMain.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+			this.statusStrip.ResumeLayout(false);
+			this.statusStrip.PerformLayout();
+			this.splitContainer.Panel1.ResumeLayout(false);
+			this.splitContainer.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+			this.splitContainer.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvLists)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvContent)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -484,8 +545,6 @@ namespace Hosts_Manager
 		#endregion
 
 		private MenuStrip menuStrip;
-		private ToolStrip toolStrip;
-		private StatusStrip statusStrip;
 		private ToolStripMenuItem fileToolStripMenuItem;
 		private ToolStripMenuItem newToolStripMenuItem;
 		private ToolStripMenuItem openToolStripMenuItem;
@@ -498,8 +557,7 @@ namespace Hosts_Manager
 		private ToolStripSeparator toolStripSeparator2;
 		private ToolStripMenuItem exitToolStripMenuItem;
 		private ToolStripMenuItem editToolStripMenuItem;
-		private ToolStripMenuItem undoToolStripMenuItem;
-		private ToolStripMenuItem redoToolStripMenuItem;
+		private ToolStripMenuItem discardToolStripMenuItem;
 		private ToolStripSeparator toolStripSeparator3;
 		private ToolStripMenuItem cutToolStripMenuItem;
 		private ToolStripMenuItem copyToolStripMenuItem;
@@ -515,15 +573,23 @@ namespace Hosts_Manager
 		private ToolStripMenuItem searchToolStripMenuItem;
 		private ToolStripSeparator toolStripSeparator5;
 		private ToolStripMenuItem aboutToolStripMenuItem;
-		private ToolStripButton editToolStripButton;
-		private ToolStripButton removeToolStripButton;
-		private ToolStripSeparator toolStripSeparator0;
-		private ToolStripButton generateToolStripButton;
-		private Panel panelMain;
-		private DataGridView dataGridView;
-		private ToolStripSplitButton addtoolStripSplitButton;
-		private ToolStripMenuItem addToolStripMenuItem;
-		private ToolStripMenuItem addBulkToolStripMenuItem;
+		private ToolStrip toolStrip;
+		private ToolStripButton newToolStripButton;
+		private ToolStripButton openToolStripButton;
+		private ToolStripButton saveToolStripButton;
+		private ToolStripButton printToolStripButton;
+		private ToolStripSeparator toolStripSeparator6;
+		private ToolStripButton cutToolStripButton;
+		private ToolStripButton copyToolStripButton;
+		private ToolStripButton pasteToolStripButton;
+		private ToolStripSeparator toolStripSeparator7;
+		private ToolStripButton helpToolStripButton;
+		private StatusStrip statusStrip;
+		private SplitContainer splitContainer;
+		private DataGridView dgvLists;
+		private DataGridView dgvContent;
+		private ToolStripStatusLabel lbLists;
+		private ToolStripStatusLabel lbContent;
 	}
 }
 
