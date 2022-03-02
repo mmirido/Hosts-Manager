@@ -2,29 +2,29 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Hosts_Manager.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DefaultPath" Type="System.String" Scope="User">
+    <Setting Name="hostsDir" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Windows\System32\drivers\etc\</Value>
     </Setting>
-    <Setting Name="Hosts" Type="System.String" Scope="User">
+    <Setting Name="hostsFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">hosts</Value>
     </Setting>
-    <Setting Name="HostsBackup" Type="System.String" Scope="User">
+    <Setting Name="hostsBakFile" Type="System.String" Scope="User">
       <Value Profile="(Default)">hosts.bak</Value>
     </Setting>
-    <Setting Name="ListPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data\DomainList.xml</Value>
-    </Setting>
-    <Setting Name="DataPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data</Value>
-    </Setting>
-    <Setting Name="ListFileName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DomainList.xml</Value>
-    </Setting>
-    <Setting Name="DefaultIP" Type="System.String" Scope="User">
+    <Setting Name="defaultIP" Type="System.String" Scope="User">
       <Value Profile="(Default)">0.0.0.0</Value>
     </Setting>
-    <Setting Name="RemoveConfirmation" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="exeFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="exeDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dataFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dataDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
