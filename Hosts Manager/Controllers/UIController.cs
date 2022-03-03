@@ -75,15 +75,6 @@ namespace Hosts_Manager.Controllers
 		{
 			try
 			{
-				for (int i = 0; i < dataSet.Tables.Count; i++)
-				{
-					DataTable dt = dataSet.Tables[i];
-					string columnName = dt.TableName == "List" ? "name" : "host";
-
-					dt = DataTableHelper.Sort(dt, true, (columnName, true));
-
-					columnName = string.Empty;
-				}
 				dataSet.WriteXml(Settings.Default.dataFile, XmlWriteMode.WriteSchema);
 			}
 			catch (DirectoryNotFoundException)
@@ -131,15 +122,36 @@ namespace Hosts_Manager.Controllers
 			File.WriteAllText(Settings.Default.hostsDir + Settings.Default.hostsFile, content);
 		}
 
-		internal static string AddNewList()
+		internal static DialogResult EditList(string caption, out string newName)
 		{
-			DialogResult rs = InputBox.Show("Create New List", new (string, bool)[] { ("Enter List Name", false) }, out string[] value);
+			newName = string.Empty;
+			DialogResult rs = InputBox.Show(caption, new (string, bool)[] { ("Enter List Name", false) }, out string[] value);
 			if (rs == DialogResult.OK)
 			{
 				if (value.Length > 0)
-					return value[0];
+					newName = value[0];
+				return rs;
 			}
-			return string.Empty;
+			return rs;
+		}
+
+		internal static void ExportToXML(DataSet dataSet)
+		{
+			SaveFileDialog sfd = new SaveFileDialog
+			{
+				Filter = "XML|*.xml"
+			};
+			if (sfd.ShowDialog() == DialogResult.OK)
+			{
+				try
+				{
+					dataSet.WriteXml(sfd.FileName, XmlWriteMode.WriteSchema);
+				}
+				catch (Exception e)
+				{
+					MsgBox.ShowError(e.Message);
+				}
+			}
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using Hosts_Manager.Properties;
+using Mirido.Helper;
 using System;
 using System.Data;
 using System.IO;
@@ -125,7 +126,6 @@ namespace Hosts_Manager.Controllers
 			};
 			dt.Columns.Add(col);
 
-			dt.DefaultView.Sort = "name ASC";
 			dt.Rows.Add("Default List", true);
 
 			return dt;
@@ -171,24 +171,6 @@ namespace Hosts_Manager.Controllers
 		}
 		/*
 
-		internal static void ExportToXML(DataTable table)
-		{
-			SaveFileDialog sfd = new SaveFileDialog
-			{
-				Filter = "XML|*.xml"
-			};
-			if (sfd.ShowDialog() == DialogResult.OK)
-			{
-				try
-				{
-					XmlHelper.SaveFromDataTable(table, sfd.FileName);
-				}
-				catch (Exception e)
-				{
-					Messages.ShowError(e.Message);
-				}
-			}
-		}
 
 
 		internal static void DeleteList(string filePath)
