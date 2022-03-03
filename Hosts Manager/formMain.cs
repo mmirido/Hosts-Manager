@@ -45,27 +45,83 @@ namespace Hosts_Manager
 		#endregion
 
 		#region Menu Events
-		private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e) => UIController.ShowAbout();
-		private void newToolStripMenuItem_Click(object sender, EventArgs e) => NewList();
+		private void helpToolStripButton_Click(object sender, EventArgs e) => UIController.ShowAbout();
+		private void addNewListToolStripMenuItem_Click(object sender, EventArgs e) => NewList();
 		private void newToolStripButton_Click(object sender, EventArgs e) => NewList();
-		private void saveToolStripMenuItem_Click(object sender, EventArgs e) => SaveChanges();
-		private void saveToolStripButton_Click(object sender, EventArgs e) => SaveChanges();
+		private void newToolStripMenuItem_Click(object sender, EventArgs e) => NewList();
+		private void deleteSelectedListsToolStripMenuItem_Click(object sender, EventArgs e) => DeleteList();
 		private void discardToolStripMenuItem_Click(object sender, EventArgs e) => DiscardChanges();
+		private void editListToolStripMenuItem_Click(object sender, EventArgs e) => EditList();
+		private void editListToolStripMenuItem1_Click(object sender, EventArgs e) => EditList();
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
+		private void saveToolStripButton_Click(object sender, EventArgs e) => SaveChanges();
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e) => SaveChanges();
+		private void toXmlToolStripMenuItem_Click(object sender, EventArgs e) => UIController.ExportToXML(dataSet);
 
 		private void NewList()
 		{
-			string newListName = UIController.AddNewList();
-			if (dataSet.Tables.Contains(newListName))
+			if (UIController.EditList("Create New List", out string newListName) == DialogResult.OK)
 			{
-				if (MsgBox.ShowConfirmation($"There is already a list named \"{newListName}\".{Environment.NewLine}" +
-					$"Do you want to try again?") == DialogResult.Yes)
-					NewList();
+				if (newListName != string.Empty)
+				{
+					if (dataSet.Tables.Contains(newListName))
+					{
+						if (MsgBox.ShowConfirmation($"There is already a list named \"{newListName}\".{Environment.NewLine}" +
+							$"Do you want to try again?") == DialogResult.Yes)
+							NewList();
+					}
+					else
+					{
+						DataTable dt = dataSet.Tables["List"];
+						dt.Rows.Add(newListName, true);
+					}
+				}
 			}
-			else
+		}
+		private void EditList()
+		{
+			if (UIController.EditList("Edit List Name", out string newName) == DialogResult.OK)
 			{
-				DataTable dt = dataSet.Tables["List"];
-				dt.Rows.Add(newListName, true);
+				if (newName != string.Empty)
+				{
+					if (dataSet.Tables.Contains(newName))
+					{
+						if (MsgBox.ShowConfirmation($"There is already a list named \"{newName}\".{Environment.NewLine}" +
+							$"Do you want to try again?") == DialogResult.Yes)
+							EditList();
+					}
+					else
+					{
+						int n = dgvLists.SelectedRows[0].Index;
+						dgvLists.ClearSelection();
+
+						DataTable dt = dgvLists.DataSource as DataTable;
+						string oldName = dt.Rows[n]["name"].ToString();
+
+						dt.Rows[n].SetField("name", newName);
+						dataSet.Tables[oldName].TableName = newName;
+					}
+				}
+			}
+		}
+		private void DeleteList()
+		{
+			if (dgvLists.SelectedRows.Count > 0)
+			{
+				if (MsgBox.ShowConfirmation("Are you sure want to delete the selected lists?") == DialogResult.Yes)
+				{
+					DataTable dtList = dgvLists.DataSource as DataTable;
+					dgvContent.DataSource = null;
+					for (int i = 0; i < dgvLists.SelectedRows.Count; i++)
+					{
+						int n = dgvLists.SelectedRows[i].Index;
+
+						dataSet.Tables.Remove(dtList.Rows[n]["name"].ToString());
+						dtList.Rows.RemoveAt(n);
+					}
+					dgvLists.ClearSelection();
+				}
 			}
 		}
 
@@ -141,35 +197,7 @@ namespace Hosts_Manager
 
 		#endregion
 
-		//private void editToolStripButton_Click(object sender, EventArgs e)
-		//{
 
-		//}
-
-		//private void removeToolStripButton_Click(object sender, EventArgs e)
-		//{
-		//	/*int selectedRowCount = dataGridView.Rows.GetRowCount(DataGridViewElementStates.Selected);
-		//	if (selectedRowCount > 0)
-		//	{
-		//		if (Properties.Settings.Default.RemoveConfirmation)
-		//		{
-		//			DialogResult rs = Messages.ShowConfirmation("Are you sure want to delete the selected URL(s)?");
-		//			if (rs != DialogResult.Yes)
-		//				return;
-		//		}
-
-		//		RemoveFromDataGridView(selectedRowCount);
-		//	}*/
-		//}
-
-		//private void RemoveFromDataGridView(int rowCount)
-		//{
-		//	DataTable dt = dgv.DataSource as DataTable;
-		//	for (int i = rowCount - 1; i >= 0; i--)
-		//	{
-		//		dt.Rows.RemoveAt(dgv.SelectedRows[i].Index);
-		//	}
-		//}
 
 		//private void newToolStripMenuItem_Click(object sender, EventArgs e) => AddNewList();
 		//private void newToolStripButton_Click(object sender, EventArgs e) => AddNewList();
