@@ -10,3 +10,5 @@ The very first realease can be found [here](https://github.com/mmirido/Hosts-Man
 In this release, the software has two main button: `Add` and `Process`. User can add URLs using `Add` button or manually input in the `text box` below, one domain per line. Then, when user click the `Process` button, this tool will generate a `hosts` file and put it in the proper directory.
 
 `hosts` file can be found in the default directory at `C:\Windows\System32\drivers\etc\`
+
+This Project is now moved to new repository: [here](https://github.com/mmirido/HostsManager)
