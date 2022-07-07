@@ -11,4 +11,4 @@ In this release, the software has two main button: `Add` and `Process`. User can
 
 `hosts` file can be found in the default directory at `C:\Windows\System32\drivers\etc\`
 
-This Project is now moved to new repository: [here](https://github.com/mmirido/HostsManager)
+# This Project is now moved to new repository: [here](https://github.com/mmirido/HostsManager)
